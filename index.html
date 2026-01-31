@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Taiba Jaan ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500&family=Quicksand:wght@500;700&family=Dancing+Script:wght@700&display=swap');
+
+        :root { --cream: #fdf6ec; --pink: #f8c8d3; --hot-pink: #ff8fa3; --text: #5d4037; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Quicksand', sans-serif; }
+        body { background: var(--cream); color: var(--text); overflow: hidden; touch-action: manipulation; }
+
+        /* --- STAGE SYSTEM --- */
+        .stage { 
+            height: 100vh; width: 100vw; display: none; 
+            flex-direction: column; align-items: center; justify-content: center; 
+            position: absolute; padding: 25px; text-align: center;
+        }
+        .active { display: flex; animation: slideUp 0.6s ease-out forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- UI ELEMENTS --- */
+        .card {
+            background: #fff; border: 4px solid var(--pink); border-radius: 25px;
+            padding: 25px; width: 100%; max-width: 380px; box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .btn {
+            background: var(--hot-pink); color: white; border: none; padding: 14px 28px;
+            border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(255,143,163,0.4); font-size: 1rem;
+        }
+        
+        /* --- SPECIAL ANIMATIONS --- */
+        .floating { animation: float 3s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .sticky { background: #fff9c4; padding: 15px; transform: rotate(-2deg); border-left: 5px solid #fbc02d; margin: 10px; box-shadow: 5px 5px 10px rgba(0,0,0,0.1); }
+
+        /* --- THE LETTER & POETRY --- */
+        #letterContent { 
+            display: none; background: #fff; padding: 25px; border-radius: 15px; 
+            max-height: 400px; overflow-y: auto; text-align: left; line-height: 1.8;
+            border: 2px dashed var(--hot-pink);
+        }
+        .poetry { font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: #d81b60; margin-top: 15px; }
+
+    </style>
+</head>
+<body>
+
+    <div id="s1" class="stage active">
+        <h1 class="floating" style="font-size: 4rem;">☁️</h1>
+        <h2 style="font-family: 'Fredoka';">Wait a second...</h2>
+        <p>Something special is loading for Taiba Jaan</p>
+        <button class="btn" onclick="next(1, 2)">Open It ❤️</button>
+    </div>
+
+    <div id="s2" class="stage">
+        <div style="font-size: 80px; animation: pulse 1.5s infinite;">🌹</div>
+        <div class="card">
+            <h2>Pehla Phool...</h2>
+            <p>Duniya ke saare phool ek taraf, aur aapki smile ek taraf.</p>
+            <button class="btn" onclick="next(2, 3)">Aage Chalo ✨</button>
+        </div>
+    </div>
+
+    <div id="s3" class="stage">
+        <div class="sticky">
+            <h3>My Promise 📝</h3>
+            <p>Chahe kuch bhi ho jaye, I will never let go of your hand.</p>
+        </div>
+        <button class="btn" onclick="next(3, 4)">Click for next surprise</button>
+    </div>
+
+    <div id="s4" class="stage">
+        <div class="card" style="background: var(--pink);">
+            <h1 style="color: white;">Universe Rule #1</h1>
+            <p style="color: white; font-size: 1.5rem; font-weight: bold;">Tu meri LIFE hai,<br>Tu hi meri WIFE hai! 💍</p>
+        </div>
+        <button class="btn" onclick="next(4, 5)">Sachii? Click here ❤️</button>
+    </div>
+
+    <div id="s5" class="stage">
+        <h2>Buru's Love for Taiba:</h2>
+        <h1 id="lovePercent" style="font-size: 5rem; color: var(--hot-pink);">0%</h1>
+        <p id="calcStatus">Calculating passion...</p>
+    </div>
+
+    <div id="s6" class="stage">
+        <div class="sticky" style="background: #e1f5fe; border-left-color: #03a9f4; transform: rotate(2deg);">
+            <h3>Ek Choti Si Baat... 🥺</h3>
+            <p>I know I'm a bit dumb sometimes, par dil saaf hai. I'm sorry if I ever hurt you.</p>
+        </div>
+        <button class="btn" onclick="next(6, 7)">Maaf Kiya? ❤️</button>
+    </div>
+
+    <div id="s7" class="stage">
+        <div class="floating" style="font-size: 100px;">🏠</div>
+        <h2>You are my HOME.</h2>
+        <p>Aapke bina sab adhura hai.</p>
+        <button class="btn" onclick="next(7, 8)">Almost there...</button>
+    </div>
+
+    <div id="s8" class="stage">
+        <div style="font-size: 50px; position: absolute; animation: drift 3s infinite linear;">🏍️💨</div>
+        <h2 style="margin-top: 100px;">Coming to pick you up forever!</h2>
+        <button class="btn" onclick="next(8, 9)">Ready for the Letter? 💌</button>
+    </div>
+
+    <div id="s9" class="stage">
+        <div id="envelope" onclick="openLetter()" style="font-size: 100px; cursor: pointer; animation: bounce 2s infinite;">💌</div>
+        <div id="letterContent">
+            <h3>Meri Taiba Jaan, ❤️</h3>
+            <p>I wanted to write this just for you. You are the most beautiful soul I've ever met.</p>
+            <div class="poetry">
+                "Teri aankhon mein wo sukoon hai,<br>
+                Jo kahin aur milta nahi...<br>
+                Tu mil jaye toh sab mil gaya,<br>
+                Warna ye dil lagta nahi."
+            </div>
+            <p style="margin-top: 15px;">I loveeeeeee you x infinity! Insha'Allah hum hamesha sath rahenge.</p>
+            <p style="text-align: right; font-weight: bold;">- Hamesha Tumhara, Buru</p>
+            <button class="btn" style="width: 100%;" onclick="next(9, 10)">Final Surprise 🎆</button>
+        </div>
+    </div>
+
+    <div id="s10" class="stage">
+        <h1 style="font-family: 'Fredoka'; font-size: 3rem; color: var(--hot-pink);">TAIBA ❤️ BURU</h1>
+        <p>Hamesha ke liye. No matter what.</p>
+        <div style="font-size: 100px; margin-top: 20px;">♾️</div>
+        <p style="font-size: 0.8rem; margin-top: 50px;">Scroll back up to relive the love.</p>
+    </div>
+
+    <script>
+        function next(curr, nxt) {
+            document.getElementById('s' + curr).classList.remove('active');
+            document.getElementById('s' + nxt).classList.add('active');
+
+            if(nxt === 5) {
+                let p = 0;
+                let interval = setInterval(() => {
+                    p += 1;
+                    document.getElementById('lovePercent').innerText = p + "%";
+                    if(p >= 100) {
+                        clearInterval(interval);
+                        document.getElementById('lovePercent').innerText = "LIMITLESS";
+                        document.getElementById('calcStatus').innerText = "Error: Too much love to calculate!";
+                        setTimeout(() => next(5, 6), 2000);
+                    }
+                }, 40);
+            }
+        }
+
+        function openLetter() {
+            document.getElementById('envelope').style.display = 'none';
+            document.getElementById('letterContent').style.display = 'block';
+        }
+
+        // Background heart generator
+        setInterval(() => {
+            const h = document.createElement('div');
+            h.innerHTML = '🌸';
+            h.style.position = 'fixed';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.top = '110vh';
+            h.style.fontSize = Math.random() * 20 + 10 + 'px';
+            h.style.transition = 'linear 5s';
+            h.style.opacity = '0.6';
+            document.body.appendChild(h);
+            setTimeout(() => { h.style.top = '-10vh'; h.style.transform = 'rotate(360deg)'; }, 100);
+            setTimeout(() => h.remove(), 5500);
+        }, 400);
+
+    </script>
+
+    <style>
+        @keyframes drift {
+            0% { transform: translate(-150px, 0) rotate(0deg); }
+            50% { transform: translate(150px, 50px) rotate(10deg); }
+            100% { transform: translate(-150px, 0) rotate(0deg); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</body>
+</html>
